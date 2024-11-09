@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Developer Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #7895b2;
+            --text-color: #2c3e50;
+            --light-bg: #f5f6fa;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 2rem;
+            position: relative;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Section Styles */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        /* Project Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: var(--light-bg);
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-color);
+                flex-direction: column;
+                padding: 1rem;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Dr. Developer</h1>
+            <button class="hamburger" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#medical-projects">Medical Projects</a>
+                <a href="#tech-projects">Tech Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Where Medicine Meets Technology</h1>
+        <p>Bridging the gap between healthcare and software engineering to create innovative solutions</p>
+    </section>
+
+    <main class="container">
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <p>As both a medical doctor and software engineer, I bring a unique perspective to healthcare technology. My work focuses on developing solutions that improve patient care and medical practice efficiency.</p>
+        </section>
+
+        <section id="medical-projects">
+            <h2 class="section-title">Medical Projects</h2>
+            <div class="project-grid">
+                <!-- Medical Project Template -->
+                <article class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Medical Project Title</h3>
+                        <div class="project-tags">
+                            <span class="tag">Healthcare</span>
+                            <span class="tag">AI</span>
+                        </div>
+                        <p>Project description goes here. This is where you can describe your medical projects.</p>
+                        <a href="#" class="github-link">View on GitHub</a>
+                    </div>
+                </article>
+                <!-- Add more medical project cards as needed -->
+            </div>
+        </section>
+
+        <section id="tech-projects">
+            <h2 class="section-title">Technical Projects</h2>
+            <div class="project-grid">
+                <!-- Tech Project Template -->
+                <article class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Tech Project Title</h3>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                        </div>
+                        <p>Project description goes here. This is where you can describe your technical projects.</p>
+                        <a href="#" class="github-link">View on GitHub</a>
+                    </div>
+                </article>
+                <!-- Add more tech project cards as needed -->
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2 class="section-title">Get in Touch</h2>
+            <p>Interested in collaborating or learning more about my work?</p>
+            <div class="social-links">
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Dr. Developer. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Toggle mobile navigation
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                navLinks.classList.remove('active');
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Dynamic project loading function
+        function loadProjects(projects, containerId) {
+            const container = document.querySelector(`#${containerId} .project-grid`);
+            container.innerHTML = ''; // Clear existing projects
+
+            projects.forEach(project => {
+                const projectCard = `
+                    <article class="project-card">
+                        <div class="project-content">
+                            <h3 class="project-title">${project.title}</h3>
+                            <div class="project-tags">
+                                ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                            </div>
+                            <p>${project.description}</p>
+                            <a href="${project.github}" class="github-link">View on GitHub</a>
+                        </div>
+                    </article>
+                `;
+                container.innerHTML += projectCard;
+            });
+        }
+
+        // Example of how to add projects
+        // You can modify this data structure or load it from an external source
+        const medicalProjects = [
+            {
+                title: "AI Diagnosis Assistant",
+                tags: ["Healthcare", "AI", "Python"],
+                description: "An AI-powered tool to assist in medical diagnosis.",
+                github: "#"
+            }
+            // Add more medical projects
+        ];
+
+        const techProjects = [
+            {
+                title: "Hospital Management System",
+                tags: ["React", "Node.js", "MongoDB"],
+                description: "A full-stack application for hospital management.",
+                github: "#"
+            }
+            // Add more tech projects
+        ];
+
+        // Load initial projects
+        loadProjects(medicalProjects, 'medical-projects');
+        loadProjects(techProjects, 'tech-projects');
+    </script>
+</body>
+</html>
