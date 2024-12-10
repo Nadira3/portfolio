@@ -1,0 +1,144 @@
+/* General Page Layout */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Section */
+.work-header {
+    background: #2980b9;
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.work-header h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.work-header p {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+/* Work Experience Section */
+.work-section {
+    padding: 60px 20px;
+    background-color: #ffffff;
+}
+
+.timeline-container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Timeline Items */
+.timeline-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+    margin-bottom: 40px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+    background-color: #f1f1f1;
+    transform: translateX(10px);
+}
+
+.timeline-icon {
+    background-color: #2980b9;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-right: 20px;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-icon {
+    background-color: #16a085;
+}
+
+.timeline-content h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2980b9;
+    margin-bottom: 10px;
+}
+
+.timeline-content p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+}
+
+.timeline-content ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.timeline-content ul li {
+    font-size: 1rem;
+    color: #34495e;
+    margin: 5px 0;
+}
+
+/* Footer Section */
+.footer {
+    background-color: #34495e;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .timeline-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .timeline-icon {
+        margin-bottom: 15px;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .timeline-content ul li {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .work-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .work-header p {
+        font-size: 1rem;
+    }
+
+    .timeline-item {
+        padding: 15px;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.3rem;
+    }
+}

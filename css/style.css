@@ -1,0 +1,132 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Hero Section */
+.hero-section {
+    height: 100vh;
+    background: linear-gradient(135deg, #2980b9, #8e44ad);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    animation: fadeIn 2s ease-out;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    animation: slideIn 1s ease-out;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeInText 2s 0.5s forwards;
+}
+
+.cta-btn {
+    padding: 12px 30px;
+    background-color: #16a085;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+}
+
+.cta-btn:hover {
+    background-color: #1abc9c;
+}
+
+/* Navigation Bar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 15px 0;
+    z-index: 10;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar ul li {
+    margin: 0 20px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: #1abc9c;
+}
+
+/* About Section */
+.about-section {
+    background-color: #f9f9f9;
+    padding: 60px 20px;
+    text-align: center;
+    animation: fadeInUp 2s ease-in-out;
+}
+
+.about-section h2 {
+    font-size: 2.5rem;
+    color: #2980b9;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.about-section p {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Footer */
+.footer {
+    background-color: #34495e;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes slideIn {
+    0% { transform: translateY(-50px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes fadeInText {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
