@@ -23,9 +23,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-const menuToggle = document.querySelector('.menu-toggle');
-const dropdownMenu = document.querySelector('.dropdown-menu');
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
 
-menuToggle.addEventListener('click', () => {
-    dropdownMenu.classList.toggle('show');
+    menuToggle.addEventListener('click', function() {
+        dropdownMenu.classList.toggle('show');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!menuToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            dropdownMenu.classList.remove('show');
+        }
+    });
 });
