@@ -125,7 +125,7 @@ body {
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
     .projects-container {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
     }
 
