@@ -110,6 +110,12 @@
     padding: 20px 0;
 }
 
+/* Mobile-Specific Styles */
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column; /* Stack menu items vertically */
+ }   
+
 /* Animations */
 @keyframes fadeIn {
     0% { opacity: 0; }
