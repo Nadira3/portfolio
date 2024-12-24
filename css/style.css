@@ -54,22 +54,29 @@
     left: 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.6);
-    padding: 10px 20px; /* Added padding to avoid stretching to the edge */
+    padding: 10px 20px;
     z-index: 10;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
 }
 
 .navbar ul {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style: none; /* Remove default list styling */
+    list-style: none;
     margin: 0;
     padding: 0;
 }
 
 .navbar ul li {
-    margin: 0 15px; /* Adjust spacing between list items */
+    margin: 0 15px;
 }
 
 .navbar ul li a {
@@ -84,18 +91,48 @@
     color: #1abc9c;
 }
 
-/* Mobile-Specific Styles */
+/* Mobile Dropdown Menu */
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    z-index: 11;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.dropdown-menu li {
+    margin: 10px 0;
+}
+
+.dropdown-menu li a {
+    font-size: 1rem;
+}
+
+/* Media Query for Mobile */
 @media (max-width: 768px) {
     .navbar ul {
-        flex-direction: column; /* Stack menu items vertically on smaller screens */
+        display: none; /* Hide the navbar links */
     }
 
-    .navbar ul li {
-        margin: 10px 0; /* Add spacing between vertically stacked menu items */
+    .menu-toggle {
+        display: block; /* Show menu toggle icon */
     }
 
-    .navbar {
-        padding: 15px; /* Adjust navbar padding for smaller screens */
+    .dropdown-menu {
+        display: flex; /* Enable dropdown menu */
     }
 }
 
