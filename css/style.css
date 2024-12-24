@@ -121,6 +121,10 @@
     font-size: 1rem;
 }
 
+.dropdown-menu.show {
+    display: flex;
+}
+
 /* Media Query for Mobile */
 @media (max-width: 768px) {
     .navbar ul {
