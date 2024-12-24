@@ -1,20 +1,10 @@
 /* General Page Layout */
-html, body {
-    height: 100%; /* Make the body and html stretch to fill the viewport */
-    margin: 0;
-    display: flex;
-    flex-direction: column; /* Use flexbox to layout the page */
-}
-
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f4f7f6;
     color: #333;
-}
-
-/* Main Content */
-main {
-    flex: 1; /* Ensures the main content takes up all available space */
+    margin: 0;
+    padding: 0;
 }
 
 /* Header Section */
@@ -54,7 +44,7 @@ main {
     justify-content: space-evenly;
     gap: 30px;
     width: 100%;
-    padding: 0 15px;
+    padding: 0 15px; /* Add padding to prevent cards from touching edges */
 }
 
 .project-card {
@@ -136,8 +126,8 @@ main {
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
     .projects-container {
-        justify-content: center;
-        padding: 0 20px;
+        justify-content: center; /* Center cards for smaller screens */
+        padding: 0 20px; /* Add padding to the container */
     }
 
     .project-card {
@@ -149,10 +139,10 @@ main {
 @media (max-width: 480px) {
     .projects-container {
         justify-content: center;
-        padding: 0 10px;
+        padding: 0 10px; /* Add smaller padding for extra-small screens */
     }
 
     .project-card {
         width: 90%;
     }
-}
+    }
