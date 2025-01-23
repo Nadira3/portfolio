@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User and Task Management Microservices - AfrikAI</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.0.3/showdown.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+        .slide {
+            min-height: 100vh;
+            display: none;
+            background-color: white;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .slide.active {
+            display: block;
+        }
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            color: #666;
+        }
+        .btn {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div id="presentation">
+        <!-- Slide 1: Project Title and Name -->
+        <div class="slide active" data-slide="1">
+            <div class="text-center py-20">
+                <h1 class="text-5xl font-bold text-blue-800 mb-6">User and Task Management Microservices</h1>
+                <h2 class="text-3xl text-gray-700">AfrikAI Application</h2>
+                <p class="text-xl text-gray-600 mt-10">Presented by Precious Aitanun</p>
+            </div>
+            <div class="slide-number">1 / 20</div>
+        </div>
+
+        <!-- Slide 2: Project Description -->
+        <div class="slide" data-slide="2">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6">Project Overview</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-4">Microservices Architecture</h3>
+                <ul class="list-disc list-inside space-y-3">
+                    <li>Designed to handle user and task management for AfrikAI</li>
+                    <li>User Service: Registration, authentication, and user management</li>
+                    <li>Task Service: Task creation, processing, and management</li>
+                    <li>Label Service: Prompt-Response pairs coupling in databse, reviews and submission</li>
+                </ul>
+            </div>
+            <div class="mt-6">
+                <h3 class="text-xl font-semibold mb-4">Team</h3>
+                <p class="text-lg">Lead: Precious Aitanun (Backend Developer, Documentation Lead)</p>
+            </div>
+            <div class="slide-number">2 / 20</div>
+        </div>
+
+        <!-- Slide 3: Architecture Overview -->
+        <div class="slide" data-slide="3">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6">Architecture Overview</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-4">System Components</h3>
+                <ul class="list-disc list-inside space-y-3">
+                    <li>Gateway: Routing and authentication hub</li>
+                    <li>User Service: Comprehensive user management</li>
+                    <li>Task Service: Advanced task handling</li>
+                    <li>Label Service: Task processing support</li>
+                    <li>Email Service: Notifications and verifications</li>
+                </ul>
+            </div>
+            <div class="mt-6 text-center">
+                <div class="inline-block bg-blue-100 p-4 rounded-lg">
+                    <strong>Architectural Principle:</strong> Decoupled, scalable microservices
+                </div>
+            </div>
+            <div class="slide-number">3 / 20</div>
+        </div>
+
+        <!-- Slide 4: Technology Stack -->
+        <div class="slide" data-slide="4">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6">Technology Stack</h2>
+            <div class="grid grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Core Technologies</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Java 17</li>
+                        <li>Spring Boot</li>
+                        <li>Spring Security</li>
+                        <li>MySQL</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Development Tools</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Swagger (API Documentation)</li>
+                        <li>Docker</li>
+                        <li>Maven</li>
+                        <li>Spring Cloud</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-6 text-center">
+                <div class="inline-block bg-blue-100 p-4 rounded-lg">
+                    <strong>Focus:</strong> Robust, Scalable, and Secure Microservices
+                </div>
+            </div>
+            <div class="slide-number">4 / 20</div>
+        </div>
+
+        <!-- Slide 5: Project Flow Diagram -->
+        <div class="slide" data-slide="5">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6">Project Flow Diagram</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-4">Service Interaction Flow</h3>
+                <pre class="bg-gray-100 p-4 rounded">
+                     User Request
+                          ↓
+                     API Gateway
+                    /    |    \
+                   /     |     \
+         User Service  Task Service  Email Service
+                    \    |     /
+                     \   |    /
+                      Response
+                </pre>
+                <ul class="list-disc list-inside mt-4 space-y-2">
+                    <li>Gateway routes and authenticates requests</li>
+                    <li>Services handle specific domain logic</li>
+                    <li>Centralized error handling and logging</li>
+                </ul>
+            </div>
+            <div class="slide-number">5 / 20</div>
+        </div>
+
+        <!-- Slides 6-7: Microservices Details -->
+        <div class="slide" data-slide="6">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6">Microservices Details: User Service</h2>
+            <div class="grid grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Key Endpoints</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>/register (User Registration)</li>
+                        <li>/authenticate (User Authentication)</li>
+                        <li>/user (User Management)</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Security Features</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>JWT Token Generation</li>
+                        <li>Password Encryption</li>
+                        <li>Role-Based Access Control</li>
+                        <li>Multi-Factor Authentication</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="slide-number">6 / 20</div>
+        </div>
+
+        <div class="slide" data-slide="7">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6">Task Service Breakdown</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-4">Task Workflow</h3>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="bg-blue-100 p-4 rounded">
+                        <strong>Task Creation</strong>
+                        <p>Validate input, assign unique ID</p>
+                    </div>
+                    <div class="bg-blue-100 p-4 rounded">
+                        <strong>Task Processing</strong>
+                        <p>Route to appropriate service, track status</p>
+                    </div>
+                    <div class="bg-blue-100 p-4 rounded">
+                        <strong>Task Completion</strong>
+                        <p>Update status, generate reports(potential)</p>
+                    </div>
+                </div>
+                <ul class="list-disc list-inside mt-4 space-y-2">
+                    <li>Integration with Label Service for processing</li>
+                    <li>Real-time status tracking</li>
+                    <li>Extensible task management</li>
+                </ul>
+            </div>
+            <div class="slide-number">7 / 20</div>
+        </div>
+
+
+        <!-- Slide 8: User Service Breakdown -->
+        <div class="slide" data-slide="8">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6">User Service Breakdown</h2>
+            <div class="grid grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">User Management Features</h3>
+                    <ul class="list-disc list-inside space-y-3">
+                        <li>Secure user registration process</li>
+                        <li>Role-based access control</li>
+                        <li>Profile management</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Authorization Strategy</h3>
+                    <p>Centralized authorization managed at the gateway level</p>
+                    <ul class="list-disc list-inside space-y-3 mt-2">
+                        <li>JWT token validation</li>
+                        <li>Role-based access checks</li>
+                        <li>Granular permission management</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-6 text-center">
+                <div class="inline-block bg-blue-100 p-4 rounded-lg">
+                    <strong>Core Principle:</strong> Secure and Flexible User Management
+                </div>
+            </div>
+            <div class="slide-number">8 / 20</div>
+        </div>
+
+        <!-- Slide 9: Authentication Flow -->
+        <div class="slide" data-slide="9">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6">Authentication and Authorization Flow</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-4">Token-Based Authentication Process</h3>
+                <div class="grid grid-cols-5 gap-4 items-center">
+                    <div class="bg-blue-100 p-4 rounded text-center">
+                        <strong>User Login</strong>
+                    </div>
+                    <div class="text-center">→</div>
+                    <div class="bg-blue-100 p-4 rounded text-center">
+                        <strong>Token Generation</strong>
+                    </div>
+                    <div class="text-center">→</div>
+                    <div class="bg-blue-100 p-4 rounded text-center">
+                        <strong>Gateway Validation</strong>
+                    </div>
+                </div>
+                <ul class="list-disc list-inside mt-6 space-y-3">
+                    <li>JWT (JSON Web Token) used for secure authentication</li>
+                    <li>Tokens include user roles and permissions</li>
+                    <li>Gateway validates token before routing requests</li>
+                </ul>
+            </div>
+            <div class="mt-6 text-center">
+                <div class="inline-block bg-yellow-100 p-4 rounded-lg">
+                    <strong>Security Focus:</strong> Robust, Stateless Authentication
+                </div>
+            </div>
+            <div class="slide-number">9 / 20</div>
+        </div>
+
+        <!-- Slide 10: Database Interaction -->
+        <div class="slide" data-slide="10">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6">Database Interaction</h2>
+            <div class="grid grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">MySQL Database Configuration</h3>
+                    <ul class="list-disc list-inside space-y-3">
+                        <li>JPA (Java Persistence API) for ORM</li>
+                        <li>Hibernate as the implementation provider</li>
+                        <li>Connection pooling for efficiency</li>
+                        <li>Transactional management</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Data Models</h3>
+                    <ul class="list-disc list-inside space-y-3">
+                        <li>User Entity: Comprehensive user information</li>
+                        <li>Task Entity: Task-related data structures</li>
+                        <li>Role Enum: Permission management</li>
+                        <li>Normalized database schema</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-6 text-center">
+                <div class="inline-block bg-green-100 p-4 rounded-lg">
+                    <strong>Key Strategy:</strong> Efficient and Scalable Data Management
+                </div>
+            </div>
+            <div class="slide-number">10 / 20</div>
+        </div>
+
+        <!-- Slide 11: Swagger Documentation -->
+        <div class="slide" data-slide="11">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6">Swagger API Documentation</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-4">API Documentation Process</h3>
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="bg-blue-100 p-4 rounded">
+                        <strong>Annotation</strong>
+                        <p>Describe API endpoints</p>
+                    </div>
+                    <div class="bg-blue-100 p-4 rounded">
+                        <strong>Generation</strong>
+                        <p>Automatic documentation</p>
+                    </div>
+                    <div class="bg-blue-100 p-4 rounded">
+                        <strong>Visualization</strong>
+                        <p>Interactive Swagger UI</p>
+                    </div>
+                </div>
+                <ul class="list-disc list-inside mt-4 space-y-3">
+                    <li>Comprehensive endpoint descriptions</li>
+                    <li>Request/response model documentation</li>
+                    <li>Interactive testing capabilities</li>
+                    <li>Easy access for development teams</li>
+                </ul>
+            </div>
+            <div class="mt-6 text-center">
+                <div class="inline-block bg-purple-100 p-4 rounded-lg">
+                    <strong>Documentation Principle:</strong> Clear, Accessible API Insights
+                </div>
+            </div>
+            <div class="slide-number">11 / 20</div>
+        </div>
+
+        <!-- Slide 12: Docker Configuration -->
+        <div class="slide" data-slide="12">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6">Docker Containerization</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-4">Containerization Strategy</h3>
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold mb-2">Dockerfile Components</h4>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Base Java 17 Image</li>
+                            <li>Dependency Installation</li>
+                            <li>Application Compilation</li>
+                            <li>Port Exposure</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2">Container Benefits</h4>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Consistent Environments</li>
+                            <li>Easy Deployment</li>
+                            <li>Scalability</li>
+                            <li>Resource Efficiency</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-4 bg-gray-100 p-4 rounded">
+                    <strong>Sample Dockerfile Snippet:</strong>
+                    <pre class="text-sm overflow-x-auto">
+FROM openjdk:17-jdk-slim
+COPY target/*.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
+                    </pre>
+                </div>
+            </div>
+            <div class="slide-number">12 / 20</div>
+        </div>
+
+
+        <!-- Slide 13: Future Enahancements -->
+	<div class="slide" data-slide="13">
+	    <h2 class="text-3xl font-bold text-blue-800 mb-6">Future Enhancements</h2>
+	    <div class="grid grid-cols-2 gap-6">
+		<div class="bg-white p-6 rounded-lg shadow-md">
+		    <h3 class="text-xl font-semibold mb-4">Feature Expansion</h3>
+		    <ul class="list-disc list-inside space-y-3">
+			<li>Task Prioritization</li>
+			<li>Task Assignment</li>
+			<li>Task Scheduling</li>
+			<li>Task Analytics</li>
+                        <li>Automatic token refresh mechanism</li>
+		    </ul>
+		</div>
+		<div class="bg-white p-6 rounded-lg shadow-md">
+		    <h3 class="text-xl font-semibold mb-4">Performance Optimization</h3>
+		    <ul class="list-disc list-inside space-y-3">
+			<li>Database Indexing</li>
+			<li>Query Optimization</li>
+			<li>Cache Implementation</li>
+			<li>Load Balancing Strategies</li>
+		    </ul>
+		</div>
+	    </div>
+	    <div class="mt-6 text-center">
+		<div class="inline-block bg-yellow-100 p-4 rounded-lg">
+		    <strong>Focus:</strong> Continuous Innovation and Growth
+		</div>
+	    </div>
+	    <div class="slide-number">13 / 20</div>
+        </div>
+
+        <!-- Slide 14: Challenges Faced -->
+        <div class="slide" data-slide="14">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6">Challenges Encountered</h2>
+            <div class="grid grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Authentication Challenge</h3>
+                    <p>Complex token validation at gateway level</p>
+                    <ul class="list-disc list-inside mt-2 space-y-2">
+                        <li>Implementing secure token parsing</li>
+                        <li>Managing token lifecycle</li>
+                        <li>Preventing unauthorized access</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Service Communication</h3>
+                    <p>Ensuring smooth inter-service interactions</p>
+                    <ul class="list-disc list-inside mt-2 space-y-2">
+                        <li>Minimizing latency</li>
+                        <li>Handling potential failures</li>
+                        <li>Maintaining data consistency</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Database Management</h3>
+                    <p>Maintaining data integrity across services</p>
+                    <ul class="list-disc list-inside mt-2 space-y-2">
+                        <li>Preventing data duplication</li>
+                        <li>Implementing efficient queries</li>
+                        <li>Managing database connections</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-6 text-center">
+                <div class="inline-block bg-yellow-100 p-4 rounded-lg">
+                    <strong>Key Insight:</strong> Challenges Drive Technological Innovation
+                </div>
+            </div>
+            <div class="slide-number">14 / 20</div>
+        </div>
+
+        <!-- Slide 15: Successes Achieved -->
+        <div class="slide" data-slide="15">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6">Project Successes</h2>
+            <div class="grid grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Microservices Integration</h3>
+                    <ul class="list-disc list-inside space-y-3">
+                        <li>Seamless service communication</li>
+                        <li>Decoupled architectural components</li>
+                        <li>Flexible and scalable design</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Technical Achievements</h3>
+                    <ul class="list-disc list-inside space-y-3">
+                        <li>Comprehensive Swagger documentation</li>
+                        <li>Robust Docker containerization</li>
+                        <li>Effective security implementation</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-6 text-center">
+                <div class="inline-block bg-green-100 p-4 rounded-lg">
+                    <strong>Overall Impact:</strong> Robust and Scalable Microservices Architecture
+                </div>
+            </div>
+            <div class="slide-number">15 / 20</div>
+        </div>
+
+        <!-- Slide 16: Areas for Improvement -->
+        <div class="slide" data-slide="16">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6">Areas for Improvement</h2>
+            <div class="grid grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Error Handling</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Implement more comprehensive logging</li>
+                        <li>Create detailed error reporting</li>
+                        <li>Develop robust error recovery mechanisms</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Scalability</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Optimize service performance</li>
+                        <li>Implement auto-scaling strategies</li>
+                        <li>Enhance load balancing</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Database Optimization</h3>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Improve query efficiency</li>
+                        <li>Implement advanced caching</li>
+                        <li>Optimize database schema</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-6 text-center">
+                <div class="inline-block bg-blue-100 p-4 rounded-lg">
+                    <strong>Continuous Improvement:</strong> The Path to Excellence
+                </div>
+            </div>
+            <div class="slide-number">16 / 20</div>
+        </div>
+
+        <!-- Slide 17: Lessons Learned -->
+        <div class="slide" data-slide="17">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6">Lessons Learned</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="grid grid-cols-3 gap-6">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Documentation</h3>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Importance of clear API docs</li>
+                            <li>Swagger as a critical tool</li>
+                            <li>Comprehensive endpoint descriptions</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Communication</h3>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Effective inter-service communication</li>
+                            <li>Error handling strategies</li>
+                            <li>Importance of loose coupling</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Security</h3>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Robust authentication methods</li>
+                            <li>Gateway-level security</li>
+                            <li>Continuous security review</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6 text-center">
+                <div class="inline-block bg-purple-100 p-4 rounded-lg">
+                    <strong>Core Insight:</strong> Learning is a Continuous Journey
+                </div>
+            </div>
+            <div class="slide-number">17 / 20</div>
+        </div>
+
+        <!-- Slide 18: Next Steps -->
+        <div class="slide" data-slide="18">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6">Next Steps</h2>
+            <div class="grid grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Testing Improvements</h3>
+                    <ul class="list-disc list-inside space-y-3">
+                        <li>Enhance unit test coverage</li>
+                        <li>Develop comprehensive integration tests</li>
+                        <li>Implement end-to-end testing strategies</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Production Readiness</h3>
+                    <ul class="list-disc list-inside space-y-3">
+                        <li>Prepare for service scaling</li>
+                        <li>Optimize performance metrics</li>
+                        <li>Implement advanced monitoring</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-6 text-center">
+                <div class="inline-block bg-green-100 p-4 rounded-lg">
+                    <strong>Focus:</strong> Continuous Improvement and Innovation
+                </div>
+            </div>
+            <div class="slide-number">18 / 20</div>
+        </div>
+
+        <!-- Slide 19: Conclusion -->
+        <div class="slide" data-slide="19">
+            <div class="text-center py-20">
+                <h2 class="text-4xl font-bold text-blue-800 mb-6">Project Reflection</h2>
+                <div class="bg-white p-8 rounded-lg shadow-md inline-block">
+                    <p class="text-xl mb-4">Building microservices for AfrikAI has been an incredible learning journey.</p>
+                    <p class="text-xl mb-4">Challenges in authentication, service communication, and database management were transformed into opportunities for growth.</p>
+                    <p class="text-xl">The project showcases the power of modern software architecture and continuous improvement.</p>
+                </div>
+                <div class="mt-10">
+                    <p class="text-2xl text-gray-700">Key Takeaway: Innovation Thrives Through Challenge</p>
+                </div>
+            </div>
+            <div class="slide-number">19 / 20</div>
+        </div>
+
+        <!-- Slide 20: Contact Information -->
+        <div class="slide" data-slide="20">
+            <div class="text-center py-20">
+                <h2 class="text-4xl font-bold text-blue-800 mb-6">Contact Information</h2>
+                <div class="bg-white p-8 rounded-lg shadow-md inline-block">
+                    <p class="text-xl mb-4"><strong>Name:</strong> Precious Aitanun</p>
+                    <p class="text-xl mb-4"><strong>Email:</strong> paitanun35@gmail.com</p>
+                    <p class="text-xl"><strong>LinkedIn:</strong> @techdoctorP</p>
+                    <p class="text-xl"><strong>X:</strong> @techdoctorP</p>
+                </div>
+                <div class="mt-10">
+                    <p class="text-lg text-gray-600">Thank you for your attention!</p>
+                </div>
+            </div>
+            <div class="slide-number">20 / 20</div>
+        </div>
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="navigation">
+        <button id="prevSlide" class="btn">Previous</button>
+        <button id="nextSlide" class="btn">Next</button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 20;
+
+        function showSlide(slideNumber) {
+            // Hide all slides
+            document.querySelectorAll('.slide').forEach(slide => {
+                slide.classList.remove('active');
+            });
+
+            // Show the selected slide
+            const slideToShow = document.querySelector(`.slide[data-slide="${slideNumber}"]`);
+            if (slideToShow) {
+                slideToShow.classList.add('active');
+                currentSlide = slideNumber;
+            }
+        }
+
+        document.getElementById('nextSlide').addEventListener('click', () => {
+            currentSlide = currentSlide < totalSlides ? currentSlide + 1 : totalSlides;
+            showSlide(currentSlide);
+        });
+
+        document.getElementById('prevSlide').addEventListener('click', () => {
+            currentSlide = currentSlide > 1 ? currentSlide - 1 : 1;
+            showSlide(currentSlide);
+        });
+    </script>
+</body>
+</html>
