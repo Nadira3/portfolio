@@ -1,0 +1,139 @@
+graph TD
+    Start[Start] --> Head[Head]
+    Head --> Neck[Neck]
+    Neck --> Chest[Chest]
+    Chest --> Abdomen[Abdomen]
+    Abdomen --> Pelvis[Pelvis/Genitalia]
+    Pelvis --> Lower_Extremities[Lower Extremities]
+    Lower_Extremities --> Upper_Extremities[Upper Extremities]
+    Upper_Extremities --> End[End]
+
+    %% Head Section
+    subgraph Head
+        Head --> Inspection_Head[Inspection]
+        Inspection_Head --> Facial_Asymmetry[Facial Asymmetry]
+        Facial_Asymmetry --> Bells_Palsy[Bell's Palsy]
+        Bells_Palsy --> Symptoms_BP["Sudden weakness, drooling, inability to close eye"]
+        Facial_Asymmetry --> Stroke[Stroke]
+        Stroke --> Symptoms_Stroke["Sudden numbness, confusion, trouble speaking"]
+        Facial_Asymmetry --> Trauma[Trauma]
+        Trauma --> Symptoms_Trauma["Pain, swelling, bruising"]
+        Inspection_Head --> Scalp_Lesions[Scalp Lesions]
+        Scalp_Lesions --> Seborrheic_Dermatitis[Seborrheic Dermatitis]
+        Seborrheic_Dermatitis --> Symptoms_SD["Itching, flaking"]
+        Scalp_Lesions --> Psoriasis[Psoriasis]
+        Psoriasis --> Symptoms_Ps["Red patches, scaling"]
+    end
+
+    %% Neck Section
+    subgraph Neck
+        Neck --> Inspection_Neck[Inspection]
+        Inspection_Neck --> Thyroid_Enlargement[Thyroid Enlargement]
+        Thyroid_Enlargement --> Goiter[Goiter]
+        Goiter --> Symptoms_Goiter["Neck swelling, difficulty swallowing, coughing"]
+        Thyroid_Enlargement --> Thyroiditis[Thyroiditis]
+        Thyroiditis --> Symptoms_Thyroiditis["Neck pain, fever, fatigue"]
+        Thyroid_Enlargement --> Thyroid_Cancer[Thyroid Cancer]
+        Thyroid_Cancer --> Symptoms_TC["Lump in neck, hoarseness, difficulty breathing"]
+        Inspection_Neck --> Lymphadenopathy[Lymphadenopathy]
+        Lymphadenopathy --> Infection[Infection]
+        Infection --> Symptoms_Infection["Fever, sore throat"]
+        Lymphadenopathy --> Lymphoma[Lymphoma]
+        Lymphoma --> Symptoms_Lymphoma["Weight loss, night sweats"]
+        Neck --> Auscultation_Neck[Auscultation]
+        Auscultation_Neck --> Carotid_Bruit[Carotid Bruit]
+        Carotid_Bruit --> Carotid_Stenosis[Carotid Artery Stenosis]
+        Carotid_Stenosis --> Symptoms_CS["Dizziness, transient ischemic attacks"]
+    end
+
+    %% Chest Section
+    subgraph Chest
+        Chest --> Inspection_Chest[Inspection]
+        Inspection_Chest --> Asymmetrical_Expansion[Asymmetrical Chest Expansion]
+        Asymmetrical_Expansion --> Pneumonia[Pneumonia]
+        Pneumonia --> Symptoms_Pneumonia["Fever, cough, sputum, chest pain"]
+        Asymmetrical_Expansion --> Pleural_Effusion[Pleural Effusion]
+        Pleural_Effusion --> Symptoms_PE["Shortness of breath, chest pain"]
+        Inspection_Chest --> Cyanosis[Cyanosis]
+        Cyanosis --> Hypoxia[Hypoxia]
+        Hypoxia --> Symptoms_Hypoxia["Shortness of breath, confusion"]
+        Chest --> Auscultation_Chest[Auscultation]
+        Auscultation_Chest --> Wheezes[Wheezes]
+        Wheezes --> Asthma[Asthma]
+        Asthma --> Symptoms_Asthma["Shortness of breath, coughing, chest tightness"]
+        Wheezes --> COPD[COPD]
+        COPD --> Symptoms_COPD["Chronic cough, sputum, dyspnea"]
+        Auscultation_Chest --> Murmur[Heart Murmur]
+        Murmur --> Mitral_Regurgitation[Mitral Regurgitation]
+        Mitral_Regurgitation --> Symptoms_MR["Fatigue, palpitations, shortness of breath"]
+        Murmur --> Aortic_Stenosis[Aortic Stenosis]
+        Aortic_Stenosis --> Symptoms_AS["Chest pain, syncope, heart failure"]
+    end
+
+    %% Abdomen Section
+    subgraph Abdomen
+        Abdomen --> Inspection_Abd[Inspection]
+        Inspection_Abd --> Distension[Distension]
+        Distension --> Ascites[Ascites]
+        Ascites --> Symptoms_Ascites["Increased girth, weight gain, shortness of breath"]
+        Distension --> Bowel_Obstruction[Bowel Obstruction]
+        Bowel_Obstruction --> Symptoms_BO["Abdominal pain, vomiting, constipation"]
+        Inspection_Abd --> Scars[Scars]
+        Scars --> Previous_Surgery[Previous Surgery]
+        Previous_Surgery --> Symptoms_PS["None, or adhesions"]
+        Abdomen --> Auscultation_Abd[Auscultation]
+        Auscultation_Abd --> Absent_Bowel_Sounds[Absent Bowel Sounds]
+        Absent_Bowel_Sounds --> Ileus[Ileus]
+        Ileus --> Symptoms_Ileus["Abdominal pain, nausea, vomiting"]
+        Absent_Bowel_Sounds --> Peritonitis[Peritonitis]
+        Peritonitis --> Symptoms_Peritonitis["Severe abdominal pain, fever, rigidity"]
+    end
+
+    %% Pelvis/Genitalia Section
+    subgraph Pelvis/Genitalia
+        Pelvis --> Inspection_Pelvis[Inspection]
+        Inspection_Pelvis --> Genital_Ulcers[Genital Ulcers]
+        Genital_Ulcers --> Herpes[Herpes Simplex]
+        Herpes --> Symptoms_Herpes["Painful blisters, itching, burning"]
+        Genital_Ulcers --> Syphilis[Syphilis]
+        Syphilis --> Symptoms_Syphilis["Painless ulcer, rash, fever"]
+        Inspection_Pelvis --> Inguinal_Hernia[Inguinal Hernia]
+        Inguinal_Hernia --> Hernia[Hernia]
+        Hernia --> Symptoms_Hernia["Bulge, pain, discomfort"]
+    end
+
+    %% Lower Extremities Section
+    subgraph Lower_Extremities
+        Lower_Extremities --> Inspection_Lower[Inspection]
+        Inspection_Lower --> Edema[Edema]
+        Edema --> Heart_Failure[Heart Failure]
+        Heart_Failure --> Symptoms_HF["Shortness of breath, fatigue, swelling"]
+        Edema --> Renal_Failure[Renal Failure]
+        Renal_Failure --> Symptoms_RF["Decreased urine output, nausea, confusion"]
+        Inspection_Lower --> Varicose_Veins[Varicose Veins]
+        Varicose_Veins --> Venous_Insufficiency[Venous Insufficiency]
+        Venous_Insufficiency --> Symptoms_VI["Leg swelling, skin changes, ulcers"]
+        Lower_Extremities --> Auscultation_Lower[Auscultation]
+        Auscultation_Lower --> Femoral_Bruit[Femoral Bruit]
+        Femoral_Bruit --> Peripheral_Artery_Disease[Peripheral Artery Disease]
+        Peripheral_Artery_Disease --> Symptoms_PAD["Leg pain with walking, cold feet"]
+    end
+
+    %% Upper Extremities Section
+    subgraph Upper_Extremities
+        Upper_Extremities --> Inspection_Upper[Inspection]
+        Upper_Extremities --> Inspection_Upper[Inspection]
+        Inspection_Upper --> Tremors[Tremors]
+        Tremors --> Parkinsons[Parkinson's Disease]
+        Parkinsons --> Symptoms_PD["Resting tremor, bradykinesia, rigidity"]
+        Tremors --> Essential_Tremor[Essential Tremor]
+        Essential_Tremor --> Symptoms_ET["Action tremor, often in hands"]
+        Inspection_Upper --> Muscle_Wasting[Muscle Wasting]
+        Muscle_Wasting --> Neuropathy[Neuropathy]
+        Neuropathy --> Symptoms_Neuropathy["Weakness, numbness, pain"]
+        Upper_Extremities --> Auscultation_Upper[Auscultation]
+        Auscultation_Upper --> Brachial_Bruit[Brachial Bruit]
+        Brachial_Bruit --> Arterial_Stenosis[Arterial Stenosis]
+        Arterial_Stenosis --> Symptoms_AS_upper["Arm pain, weakness"]
+    end
+
